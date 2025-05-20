@@ -1,0 +1,153 @@
+import os
+import zipfile
+
+# HTML content for your site
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support by Faith</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    header {
+      background-color: #008080;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #C0C0C0;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #008080;
+    }
+    .services, .contact {
+      margin-top: 2rem;
+    }
+    .service-item {
+      margin-bottom: 1.5rem;
+    }
+    form {
+      background-color: #f4f4f4;
+      padding: 1.5rem;
+      border-radius: 5px;
+      border: 1px solid #C0C0C0;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #C0C0C0;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid #008080;
+    }
+    button {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #008080;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #000000;
+      color: #C0C0C0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Support by Faith</h1>
+    <p>Professional. Personal. Remote Support You Can Trust.</p>
+  </header>
+
+  <section>
+    <h2>About Us</h2>
+    <p>At <strong>Support by Faith</strong>, we believe in the power of personal connection. Our work-from-home call center
+      provides reliable, warm, and professional customer support services tailored to your business needs — all from the comfort of home.</p>
+
+    <div class="services">
+      <h2>Our Services</h2>
+      <div class="service-item">
+        <h3>Customer Support</h3>
+        <p>Phone and email support for your customers with a personal touch.</p>
+      </div>
+      <div class="service-item">
+        <h3>Virtual Reception</h3>
+        <p>Call answering, appointment scheduling, and front-line communication services.</p>
+      </div>
+      <div class="service-item">
+        <h3>Outbound Calls</h3>
+        <p>Follow-ups, confirmations, and client check-ins with professionalism and care.</p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2>Contact Us</h2>
+      <form action="mailto:youremail@supportbyfaith.com" method="POST" enctype="text/plain">
+        <label for="name">Your Name</label>
+        <input type="text" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Support by Faith. All rights reserved.
+  </footer>
+
+</body>
+</html>
+"""
+
+# Create project folder
+os.makedirs("support_by_faith_site", exist_ok=True)
+
+# Save HTML file
+with open("support_by_faith_site/index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+# Zip the folder
+with zipfile.ZipFile("support_by_faith_github.zip", "w") as zipf:
+    zipf.write("support_by_faith_site/index.html", arcname="index.html")
+
+print("ZIP file created: support_by_faith_github.zip")
